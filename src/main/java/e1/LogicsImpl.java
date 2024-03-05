@@ -1,17 +1,15 @@
 package e1;
 
-import java.util.*;
-
 public class LogicsImpl implements Logics {
 	
 	private Pair<Integer, Integer> pawn = null;
 	private Pair<Integer,Integer> knight;
 	private final int size;
-	private Inizializer inizializer= new InizializerImpl();
+	private Inizializer inizializer;
 
-	 
     public LogicsImpl(int size){
     	this.size = size;
+		inizializer= new InizializerImpl();
         this.pawn = this.inizializer.randomInit(size, pawn);
         this.knight = this.inizializer.randomInit(size,pawn);	
     }
