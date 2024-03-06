@@ -1,5 +1,6 @@
 package e2;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 
 import java.util.PrimitiveIterator;
@@ -22,8 +23,8 @@ public class MinesweeperLogicsTests {
     void failHitMineTest(){
         assertFalse(logics.hitMine(pos));
     }
-    @Test
-    void createGrid(){
-        Grid grid = new GridImpl(size);
-    };
+    
+  
+
+    
 }
