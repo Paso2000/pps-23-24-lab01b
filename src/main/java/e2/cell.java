@@ -1,5 +1,7 @@
 package e2;
 
-public interface Cel {
+public interface cell {
 
+    public char getValue();
 }
+
