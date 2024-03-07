@@ -4,8 +4,8 @@ import java.util.List;
 
 public interface Grid {
 
-    public Grid createGrid(int size);
-
-    public List<cell> getAdjacent(cell cell);
+    public cell[][] getGrid();
     
+    public List<cell> getAdjacent(cell cell);
+
 }
