@@ -21,6 +21,7 @@ public class LogicsImpl implements Logics {
     }
 
     public Boolean hitMine(int row , int col) {
+        createdGrid[row][col].clicked();
         if(createdGrid[row][col].getValue()=='*'){
             return true;
         }
