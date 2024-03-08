@@ -16,12 +16,13 @@ public class GridImpl implements Grid {
     public GridImpl(int size, int numMines){
         this.size=size;
         this.numMines=numMines;
-        grid = new cell[size][size];
+        instantiateGrid(size);
         insertMine();
     }
 
-    private void implementGrid(int size) {
-    }
+    private void instantiateGrid(int size) {
+        grid = new cell[size][size];
+    }   
     
     public cell[][] getGrid() {
         return grid;
@@ -33,9 +34,4 @@ public class GridImpl implements Grid {
             }
     }
 
-    @Override
-    public List<cell> getAdjacent(cell cell) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getAdjacent'");
-    }
 }

@@ -14,14 +14,8 @@ public class GridTests {
     @Test
     void createGridCollection(){
       cell[][] createdGrid = grid.getGrid();
-      for(int i=0;i<size;i++){
-        for(int j =0;j<size;j++){
-        System.out.println(createdGrid[i][j].getValue());
-        }
       }
+    
 
-
-
-    }
 
 }

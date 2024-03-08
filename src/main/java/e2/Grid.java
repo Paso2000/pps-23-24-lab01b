@@ -6,6 +6,4 @@ public interface Grid {
 
     public cell[][] getGrid();
     
-    public List<cell> getAdjacent(cell cell);
-
 }

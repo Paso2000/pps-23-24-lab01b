@@ -2,6 +2,6 @@ package e2;
 
 public interface Logics {
 
-    Boolean hitMine(Pair<Integer,Integer> pos);
+    Boolean hitMine(int row, int col);
     
 }

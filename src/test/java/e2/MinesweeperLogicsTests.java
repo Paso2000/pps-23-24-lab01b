@@ -21,7 +21,7 @@ public class MinesweeperLogicsTests {
 
     @Test
     void failHitMineTest(){
-        assertFalse(logics.hitMine(pos));
+        assertFalse(logics.hitMine(pos.getX(),pos.getY()));
     }
     
   

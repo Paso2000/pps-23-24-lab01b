@@ -6,21 +6,36 @@ import java.util.List;
 public class LogicsImpl implements Logics {
     private int size;
     private int numMines;
-    private List<Pair<Integer,Integer>> mines = new LinkedList<>();
+    private Grid grid;
+    private cell[][] createdGrid;
+
     public LogicsImpl(int size, int numMines) {
         this.size=size;
         this.numMines=numMines;
-        //chose mine cells
+        implementGrid();
     }
 
-    public Boolean hitMine(Pair<Integer,Integer> pos) {
-        return false;
+    private void implementGrid() {
+        grid = new GridImpl(this.size,this.numMines);
+        createdGrid=grid.getGrid();
     }
-    // private void insertMine(){
-    //     for (Pair<Integer,Integer> mine : mines) {
-    //         cells[mine.getX()][mine.getY()]='*';
-    //     }
+
+    public Boolean hitMine(int row , int col) {
+        if(createdGrid[row][col].getValue()=='*'){
+            return true;
+        }
+        return false;
+
+    }
+
+    // public Boolean isFlagged(){
+
     // }
+
+    // public char getCounter(){
+
+    // }
+
     
 
 }
