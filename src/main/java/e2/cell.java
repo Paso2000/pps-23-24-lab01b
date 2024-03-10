@@ -1,7 +1,5 @@
 package e2;
 
-import java.util.function.BooleanSupplier;
-
 public interface cell {
 
     public char getValue();
@@ -11,5 +9,9 @@ public interface cell {
     public Boolean hasBeenClicked();
 
     public void clicked();
+
+    public void setValue(char value);
+
+    public void setIsAMine(boolean isAMine);
 }
 

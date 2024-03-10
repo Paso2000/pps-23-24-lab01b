@@ -4,6 +4,10 @@ import java.util.List;
 
 public interface Grid {
 
-    public cell[][] getGrid();
+    public char getValue(int row, int col);
+
+	public Boolean isAMine(int row, int col);
+
+    public boolean hasBeenClicked(int row, int col);
     
 }

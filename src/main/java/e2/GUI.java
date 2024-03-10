@@ -83,6 +83,9 @@ public class GUI extends JFrame {
 
     private void drawBoard() {
         for (var entry: this.buttons.entrySet()) {
+            if(logics.isClicked(entry.getValue().getX(), entry.getValue().getY())){
+                char str = logics.getValueFromGrid(entry.getValue().getX(),entry.getValue().getY());
+            }
             /* for (Entry<JButton,Pair<Integer,Integer>> entry: this.buttons.entrySet()) {
                 String str = logics.hasPawn(entry.getValue().getX(), entry.getValue().getY()) ? "*" :
                              logics.hasKnight(entry.getValue().getX(), entry.getValue().getY()) ? "K" : " ";

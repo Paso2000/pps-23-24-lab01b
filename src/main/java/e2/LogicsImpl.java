@@ -17,23 +17,23 @@ public class LogicsImpl implements Logics {
 
     private void implementGrid() {
         grid = new GridImpl(this.size,this.numMines);
-        createdGrid=grid.getGrid();
     }
 
     public Boolean hitMine(int row , int col) {
-        createdGrid[row][col].clicked();
-        if(createdGrid[row][col].getValue()=='*'){
-            return true;
-        }
-        return false;
-
+        return grid.isAMine(row,col);
+       
     }
 
+     public char getValueFromGrid(int row, int col ){
+        return grid.getValue(row, col);
+     }
+
+     public boolean isClicked(int row, int col){
+         return grid.hasBeenClicked(row,col);
+     }
+
+     
     // public Boolean isFlagged(){
-
-    // }
-
-    // public char getCounter(){
 
     // }
 

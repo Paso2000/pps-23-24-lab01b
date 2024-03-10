@@ -6,11 +6,6 @@ public class CellImpl implements cell {
     private Boolean isAMine;
     private Boolean clicked=false;
 
-    public CellImpl(char value, Boolean isAMine){
-        this.value=value;
-        this.isAMine=isAMine;
-    }
-
     public CellImpl() {
         this.value='0';
         this.isAMine=false;
@@ -25,12 +20,20 @@ public class CellImpl implements cell {
 
     @Override
     public Boolean hasBeenClicked() {
-        return clicked;
+        return this.clicked;
     }
 
     @Override
     public void clicked() {
-       clicked=true;
+       this.clicked=true;
+    }
+
+    public void setValue(char value){
+        this.value=value;
+    }
+
+    public void setIsAMine(boolean isAMine){
+        this.isAMine=isAMine;
     }
 
 
