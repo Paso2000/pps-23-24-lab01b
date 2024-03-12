@@ -10,8 +10,7 @@ public interface cell {
 
     public void clicked();
 
-    public void setValue(char value);
+    public void setMine(char value, boolean isAMine);
 
-    public void setIsAMine(boolean isAMine);
 }
 

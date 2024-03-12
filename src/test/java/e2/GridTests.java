@@ -2,47 +2,42 @@ package e2;
 
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 public class GridTests {
+    private static final int DEFAULT_VALUE = 0;
     private Grid grid;
     private int size=8;
     private int numMines=5;
-    int row =1;
-    int col = 2;
+    int row =2;
+    int col = 3;
       @BeforeEach 
     void createGrid(){
         grid = new GridImpl(size, numMines);
 
     }
+
+
     @Test
-    void createGridCollection(){
+    void testMineInGrid(){
     for (int i=0; i<size; i++){
       for (int j=0;j<size; j++){
-        char c = grid.getValue(i,j);
+        char value = grid.getValue(i,j);
         if(grid.isAMine(i, j)){
-          assertEquals(c, '*');
-        }else{
-          assertEquals(c, '0');
+          assertEquals(value, '*');
+        }
         }
       }
     }
-      }
-      // @Test
-      // void testMine(){
-      // assertAll(
-      //   ()->assertFalse(grid.isAMine(row, col)),
-      //   ()->assertTrue(grid.hasBeenClicked(row, col))
-      // );
-      // }
 
-
-
-    
+@Test
+  void adiacentMines(){
+    grid.getAdiacent(row,col);
+    assertEquals(3,grid.getValue(row, col));
+  } 
 
 
 }

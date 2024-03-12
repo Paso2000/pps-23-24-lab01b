@@ -31,8 +31,7 @@ public class CellsTests {
 
     @Test
     void setCell(){
-        cell.setValue('3');
-        cell.setIsAMine(true);
+        cell.setMine('3', true);
         assertAll(
         ()->assertEquals(cell.getValue(), '3'),
         ()->assertTrue(cell.isAMine())

@@ -28,13 +28,9 @@ public class CellImpl implements cell {
        this.clicked=true;
     }
 
-    public void setValue(char value){
+    public void setMine(char value, boolean isAMine){
         this.value=value;
-    }
-
-    public void setIsAMine(boolean isAMine){
         this.isAMine=isAMine;
     }
-
 
 }
