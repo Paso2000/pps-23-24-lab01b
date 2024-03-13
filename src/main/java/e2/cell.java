@@ -12,5 +12,9 @@ public interface cell {
 
     public void setMine(char value, boolean isAMine);
 
+    public void changeFlag();
+
+    public boolean isFlaged();
+
 }
 

@@ -27,7 +27,7 @@ public class GUI extends JFrame {
         ActionListener onClick = (e)->{
             final JButton bt = (JButton)e.getSource();
             final Pair<Integer,Integer> pos = buttons.get(bt);
-            boolean aMineWasFound = logics.hitMine(pos.getX(),pos.getY());       
+            boolean aMineWasFound = logics.cickedOnAMine(pos.getX(),pos.getY());       
             if (aMineWasFound) {
                 quitGame();
                 JOptionPane.showMessageDialog(this, "You lost!!");
@@ -49,7 +49,7 @@ public class GUI extends JFrame {
                 final JButton bt = (JButton)e.getSource();
                 if (bt.isEnabled()){
                     final Pair<Integer,Integer> pos = buttons.get(bt);
-                    // call the logic here to put/remove a flag
+                    logics.changeFlag(pos.getX(), pos.getY());
                 }
                 drawBoard(); 
             }
@@ -71,31 +71,24 @@ public class GUI extends JFrame {
     private void quitGame() {
         this.drawBoard();
     	for (var entry: this.buttons.entrySet()) {
-            String str = logics.hitMine(entry.getValue().getX(),entry.getValue().getY())? "*":  String.valueOf((int)logics.getValueFromGrid(entry.getValue().getX(), entry.getValue().getY())) ;
+            String str = logics.cickedOnAMine(entry.getValue().getX(),entry.getValue().getY())? "*":  String.valueOf((int)logics.getValueFromGrid(entry.getValue().getX(), entry.getValue().getY())) ;
             entry.getKey().setText(str);
             entry.getKey().setEnabled(false);;
-        
-            // call the logic here
-            // if this button is a mine, draw it "*"
-            // disable the button
     	}
     }
 
     private void drawBoard() {
         for (var entry: this.buttons.entrySet()) {
-            if(logics.isClicked(entry.getValue().getX(), entry.getValue().getY())){
+            if(logics.isFlaged(entry.getValue().getX(), entry.getValue().getY())){
+                String str = String.valueOf('F');
+                entry.getKey().setText(str);
+            }else if(logics.isClicked(entry.getValue().getX(), entry.getValue().getY())){
                 String str = String.valueOf((int)logics.getValueFromGrid((int)entry.getValue().getX(),entry.getValue().getY()));
                 entry.getKey().setText(str);
-                entry.getKey().setEnabled(false);;
+                entry.getKey().setEnabled(false);
 
             }
-            /* for (Entry<JButton,Pair<Integer,Integer>> entry: this.buttons.entrySet()) {
-                String str = logics.hasPawn(entry.getValue().getX(), entry.getValue().getY()) ? "*" :
-                             logics.hasKnight(entry.getValue().getX(), entry.getValue().getY()) ? "K" : " ";
-                entry.getKey().setText(str); */
-            // call the logic here
-            // if this button is a cell with counter, put the number
-            // if this button has a flag, put the flag
+           
     	}
     }
     

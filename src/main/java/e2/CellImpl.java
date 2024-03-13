@@ -3,8 +3,9 @@ package e2;
 public class CellImpl implements cell {
 
     private char value;
-    private Boolean isAMine;
-    private Boolean clicked=false;
+    private boolean isAMine;
+    private boolean clicked=false;
+    private boolean flaged=false;
 
     public CellImpl() {
         this.value='0';
@@ -31,6 +32,16 @@ public class CellImpl implements cell {
     public void setMine(char value, boolean isAMine){
         this.value=value;
         this.isAMine=isAMine;
+    }
+
+    @Override
+    public void changeFlag() {
+        this.flaged=!this.flaged;
+    }
+
+    @Override
+    public boolean isFlaged() {
+       return this.flaged;
     }
 
 }

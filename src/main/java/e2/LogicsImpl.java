@@ -1,8 +1,5 @@
 package e2;
 
-import java.util.LinkedList;
-import java.util.List;
-
 public class LogicsImpl implements Logics {
     private int size;
     private int numMines;
@@ -17,8 +14,8 @@ public class LogicsImpl implements Logics {
         grid = new GridImpl(this.size,this.numMines);
     }
 
-    public Boolean hitMine(int row , int col) {
-        return grid.clickedOnAMine(row,col);
+    public Boolean cickedOnAMine(int row , int col) {
+        return grid.hitMine(row,col);
        
     }
 
@@ -30,11 +27,14 @@ public class LogicsImpl implements Logics {
          return grid.hasBeenClicked(row,col);
      }
 
-     
-    // public Boolean isFlagged(){
 
-    // }
+    @Override
+    public void changeFlag(int row, int col) {
+        grid.chageFlag(row,col);
+    }
 
-    
-
+    @Override
+    public boolean isFlaged(int row, int col) {
+        return grid.isFlaged(row,col);
+    }
 }

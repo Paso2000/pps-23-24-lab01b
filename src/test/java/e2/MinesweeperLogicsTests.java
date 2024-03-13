@@ -2,13 +2,13 @@ package e2;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
-
-import java.util.PrimitiveIterator;
-
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 public class MinesweeperLogicsTests {
+    private static int COL = 3;
+    private static int ROW = 2;
     private int size=8;
     private int numMines = 5;
     private Logics logics;
@@ -21,12 +21,28 @@ public class MinesweeperLogicsTests {
 
     @Test
     void failHitMineTest(){
-        assertFalse(logics.hitMine(pos.getX(),pos.getY()));
+        assertFalse(logics.cickedOnAMine(pos.getX(),pos.getY()));
     }
     @Test
     void testGetValueToPrint(){
-        assertEquals((int)logics.getValueFromGrid(2, 3), 3);
+
+        assertEquals((int)logics.getValueFromGrid(ROW, COL), 3);
     }
+    @Test
+    void insertFlag(){
+        logics.changeFlag(ROW,COL);
+        assertTrue(logics.isFlaged(ROW,COL));
+        
+    }
+
+    @Test
+    void doubleChangeFlag(){
+        logics.changeFlag(ROW, COL);
+        logics.changeFlag(ROW, COL);
+        assertFalse(logics.isFlaged(ROW, COL));
+    }
+
+
   
 
     

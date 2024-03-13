@@ -9,6 +9,9 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 public class CellsTests {
+    private static final boolean IS_A_MINE = true;
+    private static final char MINE_CHAR = '*';
+    private static final char DEFAULT_VALUE = '0';
     private cell cell;
     @BeforeEach
     void cerateCell(){
@@ -16,7 +19,7 @@ public class CellsTests {
     }
     @Test
     void testGEtValueFromCell(){
-        assertEquals(cell.getValue(), '0');
+        assertEquals(cell.getValue(), DEFAULT_VALUE);
     }
     @Test
     void falseHasBeenClicked(){
@@ -31,10 +34,22 @@ public class CellsTests {
 
     @Test
     void setCell(){
-        cell.setMine('3', true);
+        cell.setMine(MINE_CHAR, IS_A_MINE);
         assertAll(
-        ()->assertEquals(cell.getValue(), '3'),
+        ()->assertEquals(cell.getValue(), MINE_CHAR),
         ()->assertTrue(cell.isAMine())
         );
+    }
+
+    @Test
+    void setFlag(){
+        cell.changeFlag();
+        assertTrue(cell.isFlaged());
+    }
+    @Test
+    void setDoubleFlag(){
+        cell.changeFlag();
+        cell.changeFlag();
+        assertFalse(cell.isFlaged());
     }
 }

@@ -4,11 +4,14 @@ import java.util.Random;
 
 public class GridImpl implements Grid {
 
+    private static final boolean IS_NOT_A_MINE = false;
+    private static final char FLAG_CHAR = 'F';
     private static final boolean IS_A_MINE = true;
     private static final char MINE_CHAR = '*';
     private int size;
     private cell[][] grid;
     private int numMines;
+    private boolean test;
     Random random = new Random();
 
 
@@ -31,18 +34,22 @@ public class GridImpl implements Grid {
     }
 
     private void insertMine(){
-        // for(int i=0;i<numMines;i++){
-        //     int r1 = random.nextInt(size);
-        //     int r2= random.nextInt(size);
-        //    if(grid[r1][r2].getValue()!=MINE_CHAR){
-        //     grid[r1][r2].setMine(MINE_CHAR,IS_A_MINE);
-        //     }else{ 
-        //         i--;
-        //     }
-        // }
-        grid[1][2].setMine(MINE_CHAR,true);
+        test=true; //just for testing without randomness
+        if(test){
+            grid[1][2].setMine(MINE_CHAR,true);
         grid[2][2].setMine(MINE_CHAR, true);
         grid[3][3].setMine(MINE_CHAR, true);
+        }else{
+            for(int i=0;i<numMines;i++){
+                int r1 = random.nextInt(size);
+                int r2= random.nextInt(size);
+                if(grid[r1][r2].getValue()!=MINE_CHAR){
+                    grid[r1][r2].setMine(MINE_CHAR,IS_A_MINE);
+                }else{ 
+                    i--;
+                }
+            }
+        }
     }
 
     private void insertRightValue(){
@@ -60,7 +67,7 @@ public class GridImpl implements Grid {
     }
 
     @Override
-    public Boolean clickedOnAMine(int row, int col) {
+    public Boolean hitMine(int row, int col) {
         this.grid[row][col].clicked();
         if(grid[row][col].getValue()==0){
             autoClick(row, col);
@@ -98,7 +105,7 @@ public class GridImpl implements Grid {
             for(int j=col-1;j<=col+1;j++){
                 if(i>=0 && i<size && j>=0 && j<size && !grid[i][j].hasBeenClicked()){
                     grid[i][j].clicked();
-                    if(grid[i][j].getValue()==0 ){
+                    if(grid[i][j].getValue()==0){
                         autoClick(i, j);
                     }
                 }
@@ -106,5 +113,18 @@ public class GridImpl implements Grid {
         }
     }
 
+
+    @Override
+    public void chageFlag(int row, int col) {
+        cell cell = grid[row][col];
+        cell.changeFlag();
+
+    }
+
+
+    @Override
+    public boolean isFlaged(int row, int col) {
+        return grid[row][col].isFlaged();
+    }
 }
 
