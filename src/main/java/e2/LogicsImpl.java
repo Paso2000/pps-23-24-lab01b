@@ -37,4 +37,9 @@ public class LogicsImpl implements Logics {
     public boolean isFlaged(int row, int col) {
         return grid.isFlaged(row,col);
     }
+
+    @Override
+    public boolean hasWon() {
+        return grid.hasWon();
+    }
 }

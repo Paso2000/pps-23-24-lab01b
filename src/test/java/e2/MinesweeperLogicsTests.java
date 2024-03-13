@@ -42,6 +42,11 @@ public class MinesweeperLogicsTests {
         assertFalse(logics.isFlaged(ROW, COL));
     }
 
+    @Test
+    void hasWonTest(){
+        assertFalse(logics.hasWon());
+    }
+
 
   
 

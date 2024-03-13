@@ -18,9 +18,11 @@ public class GridImpl implements Grid {
     public GridImpl(int size, int numMines){
         this.size=size;
         this.numMines=numMines;
+        this.test=true; //just for testing  the grid without randomness
         defaultGridValue();
         insertMine();
         insertRightValue();
+
     }
 
 
@@ -34,7 +36,6 @@ public class GridImpl implements Grid {
     }
 
     private void insertMine(){
-        test=true; //just for testing without randomness
         if(test){
             grid[1][2].setMine(MINE_CHAR,true);
         grid[2][2].setMine(MINE_CHAR, true);
@@ -125,6 +126,23 @@ public class GridImpl implements Grid {
     @Override
     public boolean isFlaged(int row, int col) {
         return grid[row][col].isFlaged();
+    }
+
+
+    @Override
+    public boolean hasWon() {
+        for(int row=0; row<size;row++){
+            for (int col=0;col<size;col++){
+                cell cell = grid[row][col];
+                if(cell.isAMine() && !cell.isFlaged()){
+                    return false;
+                }
+                else if(!cell.hasBeenClicked()){
+                    return false;
+                }
+            }
+        }
+        return true;
     }
 }
 

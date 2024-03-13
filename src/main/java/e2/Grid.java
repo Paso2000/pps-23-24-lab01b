@@ -15,5 +15,7 @@ public interface Grid {
     public void chageFlag(int row, int col);
 
     public boolean isFlaged(int row, int col);
+
+    public boolean hasWon();
     
 }

@@ -34,8 +34,7 @@ public class GUI extends JFrame {
             } else {
                 drawBoard();            	
             }
-            boolean isThereVictory = false; 
-            // call the logic here to ask if there is victory
+            boolean isThereVictory = logics.hasWon(); 
             if (isThereVictory){
                 quitGame();
                 JOptionPane.showMessageDialog(this, "You won!!");
@@ -73,21 +72,25 @@ public class GUI extends JFrame {
     	for (var entry: this.buttons.entrySet()) {
             String str = logics.cickedOnAMine(entry.getValue().getX(),entry.getValue().getY())? "*":  String.valueOf((int)logics.getValueFromGrid(entry.getValue().getX(), entry.getValue().getY())) ;
             entry.getKey().setText(str);
-            entry.getKey().setEnabled(false);;
+            entry.getKey().setEnabled(false);
     	}
     }
 
     private void drawBoard() {
         for (var entry: this.buttons.entrySet()) {
             if(logics.isFlaged(entry.getValue().getX(), entry.getValue().getY())){
+                logics.isFlaged(entry.getValue().getX(), entry.getValue().getY());
                 String str = String.valueOf('F');
                 entry.getKey().setText(str);
-            }else if(logics.isClicked(entry.getValue().getX(), entry.getValue().getY())){
+            }
+             else if(logics.isClicked(entry.getValue().getX(), entry.getValue().getY())){
                 String str = String.valueOf((int)logics.getValueFromGrid((int)entry.getValue().getX(),entry.getValue().getY()));
                 entry.getKey().setText(str);
                 entry.getKey().setEnabled(false);
 
-            }
+            }else {
+                entry.getKey().setText(" ");
+            } 
            
     	}
     }

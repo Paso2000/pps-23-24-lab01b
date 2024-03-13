@@ -11,4 +11,6 @@ public interface Logics {
     public void changeFlag(int row, int col);
 
     public boolean isFlaged(int row, int col);
+
+    public boolean hasWon();
 }
