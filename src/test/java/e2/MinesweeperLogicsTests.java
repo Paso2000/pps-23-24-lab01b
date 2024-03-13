@@ -23,7 +23,10 @@ public class MinesweeperLogicsTests {
     void failHitMineTest(){
         assertFalse(logics.hitMine(pos.getX(),pos.getY()));
     }
-    
+    @Test
+    void testGetValueToPrint(){
+        assertEquals((int)logics.getValueFromGrid(2, 3), 3);
+    }
   
 
     

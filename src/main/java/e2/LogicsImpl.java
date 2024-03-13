@@ -7,8 +7,6 @@ public class LogicsImpl implements Logics {
     private int size;
     private int numMines;
     private Grid grid;
-    private cell[][] createdGrid;
-
     public LogicsImpl(int size, int numMines) {
         this.size=size;
         this.numMines=numMines;
@@ -20,7 +18,7 @@ public class LogicsImpl implements Logics {
     }
 
     public Boolean hitMine(int row , int col) {
-        return grid.isAMine(row,col);
+        return grid.clicked(row,col);
        
     }
 

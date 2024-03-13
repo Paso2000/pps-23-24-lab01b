@@ -60,7 +60,7 @@ public class GridImpl implements Grid {
     }
 
     @Override
-    public Boolean isAMine(int row, int col) {
+    public Boolean clicked(int row, int col) {
         this.grid[row][col].clicked();
         return this.grid[row][col].isAMine();
     }

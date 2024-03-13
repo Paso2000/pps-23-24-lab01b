@@ -71,9 +71,9 @@ public class GUI extends JFrame {
     private void quitGame() {
         this.drawBoard();
     	for (var entry: this.buttons.entrySet()) {
-            String str = logics.hitMine(entry.getValue().getX(),entry.getValue().getY())? "*":  String.valueOf(logics.getValueFromGrid(entry.getValue().getX(), entry.getValue().getY())) ;
+            String str = logics.hitMine(entry.getValue().getX(),entry.getValue().getY())? "*":  String.valueOf((int)logics.getValueFromGrid(entry.getValue().getX(), entry.getValue().getY())) ;
             entry.getKey().setText(str);
-            entry.getKey().disable();;
+            entry.getKey().setEnabled(false);;
         
             // call the logic here
             // if this button is a mine, draw it "*"
@@ -84,9 +84,9 @@ public class GUI extends JFrame {
     private void drawBoard() {
         for (var entry: this.buttons.entrySet()) {
             if(logics.isClicked(entry.getValue().getX(), entry.getValue().getY())){
-                String str = String.valueOf(logics.getValueFromGrid(entry.getValue().getX(),entry.getValue().getY()));
+                String str = String.valueOf((int)logics.getValueFromGrid((int)entry.getValue().getX(),entry.getValue().getY()));
                 entry.getKey().setText(str);
-                entry.getKey().disable();
+                entry.getKey().setEnabled(false);;
 
             }
             /* for (Entry<JButton,Pair<Integer,Integer>> entry: this.buttons.entrySet()) {

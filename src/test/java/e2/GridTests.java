@@ -26,7 +26,7 @@ public class GridTests {
     for (int i=0; i<size; i++){
       for (int j=0;j<size; j++){
         char value = grid.getValue(i,j);
-        if(grid.isAMine(i, j)){
+        if(grid.clicked(i, j)){
           assertEquals(value, '*');
         }
         }
