@@ -18,7 +18,7 @@ public class LogicsImpl implements Logics {
     }
 
     public Boolean hitMine(int row , int col) {
-        return grid.clicked(row,col);
+        return grid.clickedOnAMine(row,col);
        
     }
 

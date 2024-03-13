@@ -60,8 +60,11 @@ public class GridImpl implements Grid {
     }
 
     @Override
-    public Boolean clicked(int row, int col) {
+    public Boolean clickedOnAMine(int row, int col) {
         this.grid[row][col].clicked();
+        if(grid[row][col].getValue()==0){
+            autoClick(row, col);
+        }
         return this.grid[row][col].isAMine();
     }
 
@@ -77,7 +80,7 @@ public class GridImpl implements Grid {
         int count=0;
         for(int i=row-1; i<=row+1;i++){
             for(int j=col-1;j<=col+1;j++){
-                if(i>=0 && i<size && j>=0 && j<size &&( Math.abs(i-row)==1 || Math.abs(j-col)==1)){
+                if(i>=0 && i<size && j>=0 && j<size ){
                     if (grid[i][j].isAMine()) {
                         count++;
                     }
@@ -86,6 +89,21 @@ public class GridImpl implements Grid {
         }
         char charValue = (char) count ;
         grid[row][col].setMine(charValue, false);   
+    }
+
+
+    @Override
+    public void autoClick(int row, int col) {
+        for(int i=row-1; i<=row+1;i++){
+            for(int j=col-1;j<=col+1;j++){
+                if(i>=0 && i<size && j>=0 && j<size && !grid[i][j].hasBeenClicked()){
+                    grid[i][j].clicked();
+                    if(grid[i][j].getValue()==0 ){
+                        autoClick(i, j);
+                    }
+                }
+            }
+        }
     }
 
 }

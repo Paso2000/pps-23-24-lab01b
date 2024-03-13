@@ -26,7 +26,7 @@ public class GridTests {
     for (int i=0; i<size; i++){
       for (int j=0;j<size; j++){
         char value = grid.getValue(i,j);
-        if(grid.clicked(i, j)){
+        if(grid.clickedOnAMine(i, j)){
           assertEquals(value, '*');
         }
         }
@@ -38,6 +38,13 @@ public class GridTests {
     grid.getAdiacent(row,col);
     assertEquals(3,grid.getValue(row, col));
   } 
+
+  @Test
+  void testAutoClick(){
+  grid.autoClick(row,col);
+  assertTrue(grid.hasBeenClicked(row-1, col));
+  }
+ 
 
 
 }
