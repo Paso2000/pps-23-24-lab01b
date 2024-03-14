@@ -8,11 +8,14 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 public class GridTests {
+    private static final int OFFSET = 1;
+    private static final int COL = 3;
+    private static final int ROW = 2;
+    private static final int THREE_MINES_ADIACENT = 3;
     private Grid grid;
     private int size=8;
     private int numMines=5;
-    int row =2;
-    int col = 3;
+
       @BeforeEach 
     void createGrid(){
         grid = new GridImpl(size, numMines);
@@ -34,20 +37,20 @@ public class GridTests {
 
 @Test
   void adiacentMines(){
-    grid.getAdiacent(row,col);
-    assertEquals(3,grid.getValue(row, col));
+    grid.getAdiacent(ROW,COL);
+    assertEquals(THREE_MINES_ADIACENT,grid.getValue(ROW, COL));
   } 
 
   @Test
   void testAutoClick(){
-  grid.autoClick(row,col);
-  assertTrue(grid.hasBeenClicked(row-1, col));
+  grid.autoClick(ROW,COL);
+  assertTrue(grid.hasBeenClicked(ROW-OFFSET, COL));
   }
 
   @Test
   void testFlag(){
-    grid.chageFlag(row, col);
-    assertTrue(grid.isFlaged(row, col));
+    grid.chageFlag(ROW, COL);
+    assertTrue(grid.isFlaged(ROW, COL));
   }
 
   @Test

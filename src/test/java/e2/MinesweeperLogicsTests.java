@@ -7,6 +7,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 public class MinesweeperLogicsTests {
+    private static final int THREE_MINES_ADIACENT = 3;
     private static int COL = 3;
     private static int ROW = 2;
     private int size=8;
@@ -26,7 +27,7 @@ public class MinesweeperLogicsTests {
     @Test
     void testGetValueToPrint(){
 
-        assertEquals((int)logics.getValueFromGrid(ROW, COL), 3);
+        assertEquals((int)logics.getValueFromGrid(ROW, COL), THREE_MINES_ADIACENT);
     }
     @Test
     void insertFlag(){
