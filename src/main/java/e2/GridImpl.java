@@ -4,8 +4,6 @@ import java.util.Random;
 
 public class GridImpl implements Grid {
 
-    private static final boolean IS_NOT_A_MINE = false;
-    private static final char FLAG_CHAR = 'F';
     private static final boolean IS_A_MINE = true;
     private static final char MINE_CHAR = '*';
     private int size;
@@ -18,7 +16,7 @@ public class GridImpl implements Grid {
     public GridImpl(int size, int numMines){
         this.size=size;
         this.numMines=numMines;
-        this.test=true; //just for testing  the grid without randomness
+     //   this.test=true; //just for testing  the grid without randomness
         defaultGridValue();
         insertMine();
         insertRightValue();
@@ -130,14 +128,14 @@ public class GridImpl implements Grid {
 
 
     @Override
-    public boolean hasWon() {
+    public boolean isVictory() {
         for(int row=0; row<size;row++){
             for (int col=0;col<size;col++){
                 cell cell = grid[row][col];
                 if(cell.isAMine() && !cell.isFlaged()){
                     return false;
                 }
-                else if(!cell.hasBeenClicked()){
+                else if(!cell.hasBeenClicked() && !cell.isAMine()){
                     return false;
                 }
             }

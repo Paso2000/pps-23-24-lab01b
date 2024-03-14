@@ -52,7 +52,7 @@ public class GridTests {
 
   @Test
   void testVicory(){
-    assertFalse(grid.hasWon());
+    assertFalse(grid.isVictory());
   }
 
 }

@@ -40,6 +40,6 @@ public class LogicsImpl implements Logics {
 
     @Override
     public boolean hasWon() {
-        return grid.hasWon();
+        return grid.isVictory();
     }
 }

@@ -16,6 +16,6 @@ public interface Grid {
 
     public boolean isFlaged(int row, int col);
 
-    public boolean hasWon();
+    public boolean isVictory();
     
 }
